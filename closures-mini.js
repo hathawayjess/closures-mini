@@ -181,26 +181,30 @@ passwordGame.guessPassword('xh38sk'); // should return true
 
 
 
-
 function scopeFunc() {
 
 	var result = [];
 
 	for (var i = 0; i < 5; i++) {
-		result[i] = function() {
+
+		result[i] = (function(i) {
+			return function(){
 			console.log(i);
-		}
+			}
+		})(i)
 	}
+		console.log(result)
+		return result;
+
+	}
+
+	var result = scopeFunc();
 
 	result[0]();
 	result[1]();
 	result[2]();
 	result[3]();
 	result[4]();
-
-}
-
-scopeFunc();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
